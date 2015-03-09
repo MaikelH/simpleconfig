@@ -1,4 +1,6 @@
-# SimpleConfig
+# SimpleConfig 
+
+[![Build Status](https://travis-ci.org/MaikelH/simpleconfig.svg?branch=master)](https://travis-ci.org/MaikelH/simpleconfig)
 
 SimpleConfig is a configuration library for PHP. Has support for single or multiple file configurations. Aims to be a 
 simple library for basic configuration needs.
