@@ -1,6 +1,9 @@
 {
   "name": "chronos/simpleconfig",
+  "type": "library",
   "description": "Configuration library for PHP",
+  "homepage": "https://github.com/MaikelH/simpleconfig",
+  "keywords": ["config", "configuration"],
   "minimum-stability": "stable",
   "license": "LGPL",
   "authors": [
