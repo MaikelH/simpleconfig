@@ -11,7 +11,8 @@ namespace Chronos\SimpleConfig;
 
 use Chronos\SimpleConfig\Exceptions\UnknownConfigurationValue;
 
-class AbstractConfig implements  IConfig{
+class AbstractConfig implements IConfig
+{
 
     protected $configValues;
 
@@ -24,19 +25,18 @@ class AbstractConfig implements  IConfig{
      */
     public function get($path, $default = null)
     {
-        if($path == null) {
+        if ($path == null) {
             throw new \Exception("Invalid argument: Path cannot be null");
         }
 
         $parts = explode(".", $path);
         $currentValues = $this->configValues;
 
-        for($i = 0; $i < count($parts); $i++) {
-            if(array_key_exists($parts[$i], $currentValues)) {
+        for ($i = 0; $i < count($parts); $i++) {
+            if (array_key_exists($parts[$i], $currentValues)) {
                 $currentValues = $currentValues[$parts[$i]];
-            }
-            else {
-                if($default !== null) {
+            } else {
+                if ($default !== null) {
                     $currentValues = $default;
                     break;
                 }
@@ -45,5 +45,30 @@ class AbstractConfig implements  IConfig{
         }
 
         return $currentValues;
+    }
+
+    /**
+     * Set a configuration value.
+     *
+     * @param $path string Full path to the configuration file
+     * @param $value mixed Value to insert
+     */
+    public function set($path, $value)
+    {
+        $parts = explode(".", $path);
+
+        $currentValues =& $this->configValues;
+
+        foreach($parts as $pathsegment) {
+            if(isset($currentValues[$pathsegment])) {
+                $currentValues =& $currentValues[$pathsegment];
+            }
+            else {
+                $currentValues[$pathsegment] = array();
+                $currentValues =& $currentValues[$pathsegment];
+            }
+        }
+
+        $currentValues = $value;
     }
 }

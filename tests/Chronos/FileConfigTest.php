@@ -51,4 +51,30 @@ class FileConfigTest extends PHPUnit_Framework_TestCase{
 
         $this->assertEquals(array("host" => "Unknown"), $value);
     }
+
+    public function testSetFunction() {
+        $config = new FileConfig(__DIR__ . "/test-files/test-config1.php");
+
+        $config->set("test-config1.host", 2);
+
+        $this->assertEquals(2, $config->get("test-config1.host"));
+    }
+
+    public function testSetFunction2() {
+        $config = new FileConfig(__DIR__ . "/test-files/test-config1.php");
+
+        $config->set("db.host", "localhost");
+
+        $this->assertEquals("localhost", $config->get("db.host"));
+    }
+
+    public function testSetFunction3() {
+        $config = new FileConfig(__DIR__ . "/test-files/test-config1.php");
+
+        $config->set("db.host", "localhost");
+        $value = $config->get("test-config1.test2", "2");
+
+        $this->assertEquals("localhost", $config->get("db.host"));
+        $this->assertEquals("2", $value);
+    }
 }

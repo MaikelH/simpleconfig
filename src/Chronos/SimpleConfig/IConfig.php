@@ -22,4 +22,11 @@ interface IConfig {
      */
     public function get($path, $default = null);
 
+    /**
+     * Set a configuration value.
+     *
+     * @param $path string Full path to the configuration file
+     * @param $value mixed Value to insert
+     */
+    public function set($path, $value);
 }
