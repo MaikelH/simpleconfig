@@ -14,7 +14,7 @@ use Chronos\SimpleConfig\Exceptions\UnknownConfigurationValue;
 class AbstractConfig implements IConfig
 {
 
-    protected $configValues;
+    protected $configValues = [];
 
     /**
      * @param string $path Path to the configuration file. Separated by dots.
