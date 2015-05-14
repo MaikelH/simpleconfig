@@ -31,8 +31,9 @@ class AbstractConfig implements IConfig
 
         $parts = explode(".", $path);
         $currentValues = $this->configValues;
-
-        for ($i = 0; $i < count($parts); $i++) {
+        $partCount = count($parts);
+        
+        for ($i = 0; $i < $partCount; $i++) {
             if (array_key_exists($parts[$i], $currentValues)) {
                 $currentValues = $currentValues[$parts[$i]];
             } else {
