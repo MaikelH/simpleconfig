@@ -32,7 +32,7 @@ class AbstractConfig implements IConfig
         $parts = explode(".", $path);
         $currentValues = $this->configValues;
         $partCount = count($parts);
-        
+
         for ($i = 0; $i < $partCount; $i++) {
             if (array_key_exists($parts[$i], $currentValues)) {
                 $currentValues = $currentValues[$parts[$i]];
@@ -60,11 +60,10 @@ class AbstractConfig implements IConfig
 
         $currentValues =& $this->configValues;
 
-        foreach($parts as $pathsegment) {
-            if(isset($currentValues[$pathsegment])) {
+        foreach ($parts as $pathsegment) {
+            if (isset($currentValues[$pathsegment])) {
                 $currentValues =& $currentValues[$pathsegment];
-            }
-            else {
+            } else {
                 $currentValues[$pathsegment] = array();
                 $currentValues =& $currentValues[$pathsegment];
             }
